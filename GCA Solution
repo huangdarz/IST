@@ -1,0 +1,39 @@
+# Store pokemon in the pokeball as a dictionary
+pokeball = {}
+
+line = input('Command: ')
+while line:
+  # Split the line into parts by whitespace.
+  parts = line.split()
+  command = parts[0]
+  
+  if command == 'Capture':
+    # Store the pokemon if it is not already being tracked.
+    pokemon = parts[1]
+    level = parts[2]
+    if pokemon in pokeball:
+      print('You are already training ' + pokemon + '!')
+    else:
+      pokeball[pokemon] = int(level)
+      
+  elif command == 'Train':
+    # Level up the pokemon if we are tracking it.
+    pokemon = parts[1]
+    if pokemon in pokeball:
+      pokeball[pokemon] = pokeball[pokemon] + 1
+    else:
+      print('You have not captured ' + pokemon + ' yet.')
+      
+  elif command == 'Query':
+    # Print the current level for the pokemon.
+    pokemon = parts[1]
+    if pokemon in pokeball:
+      print(pokemon + ' is level ' + str(pokeball[pokemon]) + '.')
+    else:
+      print('You have not captured ' + pokemon + ' yet.')
+
+  else:
+    print('Unknown command!')
+    
+  # Read the next line from the user.
+  line = input('Command: ')
