@@ -1,0 +1,23 @@
+cmd = ['Capture','Query','Train']
+pkm = {}
+com = input("Command: ")
+while com:
+  comd = com.split()
+  if comd[0] not in cmd:
+    print('Unknown command!')
+  elif comd[0] == 'Capture':
+    if comd[1] in pkm:
+      print('You are already training',comd[1]+'!')
+    else:
+      pkm[comd[1]] = int(comd[2])
+  elif comd[0] == 'Train':
+    if comd[1] not in pkm:
+      print("You have not captured",comd[1], 'yet.')
+    else:
+      pkm[comd[1]] += 1
+  else:
+    if comd[1] not in pkm:
+      print("You have not captured",comd[1], 'yet.')
+    else:
+      print(comd[1],'is level',str(pkm[comd[1]])+'.')
+  com = input("Command: ")
